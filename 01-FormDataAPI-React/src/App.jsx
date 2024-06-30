@@ -5,6 +5,19 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    console.log(formData);
+
+    // getting values using get
+    const name = formData.get('name');
+    console.log(name);
+
+    const email = formData.get('email');
+    console.log(email);
+
+    const password = formData.get('password');
+    console.log(password);
   };
 
   return (

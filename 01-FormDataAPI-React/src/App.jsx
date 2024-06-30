@@ -7,17 +7,34 @@ function Register() {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    console.log(formData);
+    // console.log(formData);
 
-    // getting values using get
-    const name = formData.get('name');
-    console.log(name);
+    // =====  getting values using get
+    // const name = formData.get('name');
+    // console.log(name);
 
-    const email = formData.get('email');
-    console.log(email);
+    // const email = formData.get('email');
+    // console.log(email);
 
-    const password = formData.get('password');
-    console.log(password);
+    // const password = formData.get('password');
+    // console.log(password);
+
+    console.log('==========================');
+    console.log('formData.entries');
+    const entries = formData.entries();
+    console.log(entries);
+    console.log([...formData.entries()]);
+
+    console.log('==========================');
+    console.log('formData.values');
+    const values = formData.values();
+    console.log(values);
+    console.log([...formData.values()]);
+
+    console.log('==========================');
+    console.log('Object.fromEntries(formData)');
+    const data = Object.fromEntries(formData);
+    console.log(data);
   };
 
   return (

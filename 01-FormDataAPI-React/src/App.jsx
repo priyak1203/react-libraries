@@ -19,20 +19,33 @@ function Register() {
     // const password = formData.get('password');
     // console.log(password);
 
-    console.log('==========================');
-    console.log('formData.entries');
-    const entries = formData.entries();
-    console.log(entries);
-    console.log([...formData.entries()]);
+    // =====  entries, values and Object.fromEntries()
+    // console.log('==========================');
+    // console.log('formData.entries');
+    // const entries = formData.entries();
+    // console.log(entries);
+    // console.log([...formData.entries()]);
 
-    console.log('==========================');
-    console.log('formData.values');
-    const values = formData.values();
-    console.log(values);
-    console.log([...formData.values()]);
+    // console.log('==========================');
+    // console.log('formData.values');
+    // const values = formData.values();
+    // console.log(values);
+    // console.log([...formData.values()]);
 
-    console.log('==========================');
-    console.log('Object.fromEntries(formData)');
+    // console.log('==========================');
+    // console.log('Object.fromEntries(formData)');
+    // const data = Object.fromEntries(formData);
+    // console.log(data);
+
+    // ========= checking for empty values
+    const values = [...formData.values()];
+    const isEmpty = values.includes('');
+
+    if (isEmpty) {
+      console.log('please provide all values ');
+      return;
+    }
+
     const data = Object.fromEntries(formData);
     console.log(data);
   };

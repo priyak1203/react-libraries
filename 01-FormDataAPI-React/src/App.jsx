@@ -48,6 +48,9 @@ function Register() {
 
     const data = Object.fromEntries(formData);
     console.log(data);
+
+    // ======= clear inputs
+    e.currentTarget.reset();
   };
 
   return (

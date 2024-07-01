@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import getFormValues from './getFormValues';
 
 function Register() {
   const [isMember, setIsMember] = useState(false);
@@ -6,51 +7,35 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    // console.log(formData);
-
-    // =====  getting values using get
-    // const name = formData.get('name');
-    // console.log(name);
-
-    // const email = formData.get('email');
-    // console.log(email);
-
-    // const password = formData.get('password');
-    // console.log(password);
-
-    // =====  entries, values and Object.fromEntries()
-    // console.log('==========================');
-    // console.log('formData.entries');
-    // const entries = formData.entries();
-    // console.log(entries);
-    // console.log([...formData.entries()]);
-
-    // console.log('==========================');
-    // console.log('formData.values');
-    // const values = formData.values();
-    // console.log(values);
-    // console.log([...formData.values()]);
-
-    // console.log('==========================');
-    // console.log('Object.fromEntries(formData)');
-    // const data = Object.fromEntries(formData);
-    // console.log(data);
-
-    // ========= checking for empty values
-    const values = [...formData.values()];
-    const isEmpty = values.includes('');
+    const { isEmpty, data } = getFormValues(e.currentTarget);
 
     if (isEmpty) {
       console.log('please provide all values ');
       return;
     }
 
-    const data = Object.fromEntries(formData);
+    // do something
     console.log(data);
 
     // ======= clear inputs
     e.currentTarget.reset();
+
+    // const formData = new FormData(e.currentTarget);
+
+    // ========= checking for empty values
+    // const values = [...formData.values()];
+    // const isEmpty = values.includes('');
+
+    // if (isEmpty) {
+    //   console.log('please provide all values ');
+    //   return;
+    // }
+
+    // const data = Object.fromEntries(formData);
+    // console.log(data);
+
+    // // ======= clear inputs
+    // e.currentTarget.reset();
   };
 
   return (

@@ -9,6 +9,7 @@ function Register() {
 
     const { isEmpty, data } = getFormValues(e.currentTarget);
 
+    // check for empty values
     if (isEmpty) {
       console.log('please provide all values ');
       return;
@@ -19,23 +20,6 @@ function Register() {
 
     // ======= clear inputs
     e.currentTarget.reset();
-
-    // const formData = new FormData(e.currentTarget);
-
-    // ========= checking for empty values
-    // const values = [...formData.values()];
-    // const isEmpty = values.includes('');
-
-    // if (isEmpty) {
-    //   console.log('please provide all values ');
-    //   return;
-    // }
-
-    // const data = Object.fromEntries(formData);
-    // console.log(data);
-
-    // // ======= clear inputs
-    // e.currentTarget.reset();
   };
 
   return (

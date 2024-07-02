@@ -9,10 +9,17 @@ const SearchForm = () => {
     e.preventDefault();
   };
 
-  const searchCocktail = (e) => {
-    const searchTerm = e.target.value;
-    setSearchTerm(searchTerm);
-    fetchDrinks(searchTerm);
+  const searchCocktail = () => {
+    let timeoutId;
+
+    return (e) => {
+      const searchTerm = e.target.value;
+      setSearchTerm(searchTerm);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        fetchDrinks(searchTerm);
+      }, 1000);
+    };
   };
 
   return (
@@ -25,7 +32,7 @@ const SearchForm = () => {
             name="name"
             id="name"
             value={searchTerm}
-            onChange={searchCocktail}
+            onChange={searchCocktail()}
           />
         </div>
       </form>

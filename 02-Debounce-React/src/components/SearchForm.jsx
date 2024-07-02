@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useGlobalContext } from '../context';
 
 const SearchForm = () => {
@@ -22,6 +22,8 @@ const SearchForm = () => {
     };
   };
 
+  const debounceSearchCocktail = useMemo(() => searchCocktail(), []);
+
   return (
     <section className="section search">
       <form className="search-form" onSubmit={handleSubmit}>
@@ -32,7 +34,7 @@ const SearchForm = () => {
             name="name"
             id="name"
             value={searchTerm}
-            onChange={searchCocktail()}
+            onChange={debounceSearchCocktail}
           />
         </div>
       </form>

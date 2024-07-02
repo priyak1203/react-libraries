@@ -1,28 +1,31 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGlobalContext } from '../context';
 
 const SearchForm = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [timeoutId, setTimeoutId] = useState(null);
   const { fetchDrinks } = useGlobalContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const searchCocktail = () => {
-    let timeoutId;
-
-    return (e) => {
-      const searchTerm = e.target.value;
-      setSearchTerm(searchTerm);
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
+  const searchCocktail = (e) => {
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
+    clearTimeout(timeoutId);
+    setTimeoutId(
+      setTimeout(() => {
+        // Call the API after the debounce timeout
         fetchDrinks(searchTerm);
-      }, 1000);
-    };
+      }, 1000)
+    );
   };
 
-  const debounceSearchCocktail = useMemo(() => searchCocktail(), []);
+  useEffect(() => {
+    // Cleanup function to clear the timeout on unmount and re-render
+    return () => clearTimeout(timeoutId);
+  }, [timeoutId]);
 
   return (
     <section className="section search">
@@ -34,7 +37,7 @@ const SearchForm = () => {
             name="name"
             id="name"
             value={searchTerm}
-            onChange={debounceSearchCocktail}
+            onChange={searchCocktail}
           />
         </div>
       </form>

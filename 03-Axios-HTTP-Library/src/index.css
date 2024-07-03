@@ -148,3 +148,13 @@ ul {
 .title span {
   color: var(--primary-500);
 }
+
+/*
+=============== 
+Axios Tutorial
+===============
+*/
+
+.text-center {
+  text-align: center;
+}

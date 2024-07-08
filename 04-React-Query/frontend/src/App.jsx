@@ -16,7 +16,7 @@ function App() {
   return (
     <section className="section-center">
       <Form />
-      <Items items={items} />
+      <Items />
     </section>
   );
 }

@@ -34,7 +34,7 @@ app.post('/api/tasks', (req, res) => {
   }
 
   const newTask = { id: nanoid(), title, isDone: false };
-  const taskList = [...taskList, newTask];
+  taskList = [...taskList, newTask];
   res.status(201).json({ task: newTask });
 });
 

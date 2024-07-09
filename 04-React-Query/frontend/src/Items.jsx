@@ -22,7 +22,7 @@ const Items = () => {
   console.log(error);
 
   if (error) {
-    return <p style={{ marginTop: '1rem' }}>{error.message}</p>;
+    return <p style={{ marginTop: '1rem' }}>{error.response.data}</p>;
   }
 
   return (

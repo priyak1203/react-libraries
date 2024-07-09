@@ -5,14 +5,13 @@ import customFetch from './utils';
 const Form = () => {
   const [newItemName, setNewItemName] = useState('');
 
-  const result = useMutation({
+  const { mutate: createTask, isPending } = useMutation({
     mutationFn: () => customFetch.post('/', { title: 'Fixed Title' }),
   });
 
-  console.log(result);
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    createTask();
   };
 
   return (
@@ -25,7 +24,7 @@ const Form = () => {
           value={newItemName}
           onChange={(e) => setNewItemName(e.target.value)}
         />
-        <button type="submit" className="btn">
+        <button type="submit" className="btn" disabled={isPending}>
           add task
         </button>
       </div>

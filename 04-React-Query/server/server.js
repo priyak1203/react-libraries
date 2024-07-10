@@ -42,7 +42,7 @@ app.patch('/api/tasks/:id', (req, res) => {
   const { id } = req.params;
   const { isDone } = req.body;
 
-  taskList.map((task) => {
+  taskList = taskList.map((task) => {
     if (task.id === id) {
       return { ...task, isDone };
     }

@@ -3,11 +3,15 @@ import { useCreateTask } from './reactQueryCustomHooks';
 
 const Form = () => {
   const [newItemName, setNewItemName] = useState('');
-  const { createPending, createTask } = useCreateTask(setNewItemName);
+  const { createPending, createTask } = useCreateTask();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createTask(newItemName);
+    createTask(newItemName, {
+      onSuccess: () => {
+        setNewItemName('');
+      },
+    });
   };
 
   return (

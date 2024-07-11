@@ -14,7 +14,7 @@ export const useFetchTasks = () => {
   return { isLoading, data, isError };
 };
 
-export const useCreateTask = (clearInput) => {
+export const useCreateTask = () => {
   const queryClient = useQueryClient();
 
   const { mutate: createTask, isPending: createPending } = useMutation({
@@ -22,7 +22,6 @@ export const useCreateTask = (clearInput) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['tasks'] });
       toast.success('task added');
-      clearInput('');
     },
     onError: (error) => {
       toast.error(error.response.data.msg);

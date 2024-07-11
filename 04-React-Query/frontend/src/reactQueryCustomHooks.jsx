@@ -27,3 +27,18 @@ export const useEditTask = () => {
 
   return { editTask };
 };
+
+export const useDeleteTask = () => {
+  const queryClient = useQueryClient();
+
+  const { mutate: deleteTask, isPending } = useMutation({
+    mutationFn: (taskId) => {
+      return customFetch.delete(`/${taskId}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+    },
+  });
+
+  return { deleteTask, isPending };
+};

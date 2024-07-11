@@ -12,6 +12,15 @@ const SingleItem = ({ item }) => {
     },
   });
 
+  const { mutate: deleteTask, isPending } = useMutation({
+    mutationFn: (taskId) => {
+      return customFetch.delete(`/${taskId}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+    },
+  });
+
   return (
     <div className="single-item">
       <input
@@ -30,7 +39,8 @@ const SingleItem = ({ item }) => {
       <button
         className="btn remove-btn"
         type="button"
-        onClick={() => console.log('delete task')}
+        disabled={isPending}
+        onClick={() => deleteTask(item.id)}
       >
         delete
       </button>

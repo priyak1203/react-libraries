@@ -52,7 +52,7 @@ app.patch('/api/tasks/:id', (req, res) => {
   res.status(200).json({ msg: 'task updated' });
 });
 
-app.delete('/api/tasks/id', (req, res) => {
+app.delete('/api/tasks/:id', (req, res) => {
   const { id } = req.params;
   taskList = taskList.filter((task) => task.id !== id);
 

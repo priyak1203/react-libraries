@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import customFetch from './utils';
 
 export const useFetchTasks = () => {
@@ -11,4 +11,19 @@ export const useFetchTasks = () => {
   });
 
   return { isLoading, data, isError };
+};
+
+export const useEditTask = () => {
+  const queryClient = useQueryClient();
+
+  const { mutate: editTask } = useMutation({
+    mutationFn: ({ taskId, isDone }) => {
+      return customFetch.patch(`/${taskId}`, { isDone });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+    },
+  });
+
+  return { editTask };
 };

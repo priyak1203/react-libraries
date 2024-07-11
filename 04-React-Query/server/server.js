@@ -4,6 +4,7 @@ import cors from 'cors';
 import { nanoid } from 'nanoid';
 const app = express();
 
+// initial data
 let taskList = [
   { id: nanoid(), title: 'walk the dog', isDone: false },
   { id: nanoid(), title: 'wash dishes', isDone: false },
@@ -11,6 +12,7 @@ let taskList = [
   { id: nanoid(), title: 'take a nap', isDone: false },
 ];
 
+// middleware
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
@@ -18,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(cors());
 app.use(express.json());
 
+// routes
 app.get('/', (req, res) => {
   res.send('<h1>Hello From Server... </h1>');
 });
@@ -59,8 +62,10 @@ app.delete('/api/tasks/:id', (req, res) => {
   res.status(200).json({ msg: 'task removed' });
 });
 
+// not found
 app.use((req, res) => res.status(404).send('Route does not exist'));
 
+// server
 const port = process.env.port || 5000;
 
 const startApp = () => {

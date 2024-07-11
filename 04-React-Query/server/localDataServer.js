@@ -9,6 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
+// reading and writing - local file
 const dataFilePath = path.join(__dirname, 'tasks.json');
 
 const readTasksFromFile = async () => {
@@ -29,8 +30,10 @@ const writeTasksToFile = async (tasks) => {
   }
 };
 
+// initial data
 let taskList = await readTasksFromFile();
 
+// middlewares
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
@@ -38,6 +41,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(cors());
 app.use(express.json());
 
+// routes
 app.get('/', (req, res) => {
   res.send('<h1>Hello From Server... </h1>');
 });
@@ -81,8 +85,10 @@ app.delete('/api/tasks/:id', async (req, res) => {
   res.status(200).json({ msg: 'task removed' });
 });
 
+// not found
 app.use((req, res) => res.status(404).send('Route does not exist'));
 
+// server
 const port = process.env.port || 5000;
 
 const startApp = () => {

@@ -1,13 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const url = `https://api.unsplash.com/search/photos?query=office&client_id=f4NbmCFlA1q65QOE9SdDSL_jpNnxn2uBusmySTfCC_E`;
+// const url = `https://api.unsplash.com/search/photos?query=office&client_id=f4NbmCFlA1q65QOE9SdDSL_jpNnxn2uBusmySTfCC_E`;
+const url = `https://api.unsplash.com/search/photos?query=cat`;
 
 const Gallery = () => {
   const { isError, isLoading, data } = useQuery({
     queryKey: ['images'],
     queryFn: async () => {
-      const response = await axios.get(url);
+      const response = await axios.get(url, {
+        headers: {
+          Authorization:
+            'Client-ID f4NbmCFlA1q65QOE9SdDSL_jpNnxn2uBusmySTfCC_E',
+        },
+      });
       return response.data;
     },
   });

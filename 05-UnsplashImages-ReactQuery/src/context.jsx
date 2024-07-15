@@ -6,7 +6,10 @@ const getInitialDarkMode = () => {
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme:dark)'
   ).matches;
-  return prefersDarkMode;
+
+  const storedDarkTheme = localStorage.getItem('darkTheme') === 'true';
+
+  return storedDarkTheme || prefersDarkMode;
 };
 
 const AppProvider = ({ children }) => {
@@ -16,6 +19,7 @@ const AppProvider = ({ children }) => {
   const toggleDarkTheme = () => {
     const newDarkTheme = !isDarkTheme;
     setIsDarkTheme(newDarkTheme);
+    localStorage.setItem('darkTheme', newDarkTheme);
   };
 
   useEffect(() => {

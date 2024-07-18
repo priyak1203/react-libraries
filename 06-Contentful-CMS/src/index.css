@@ -319,3 +319,52 @@ body {
     display: block;
   }
 }
+
+/* 
+============= 
+PROJECTS 
+=============
+*/
+
+.projects {
+  padding: 5rem 0;
+}
+.projects-center {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 3rem;
+  display: grid;
+  gap: 2rem;
+}
+.project {
+  background: var(--white);
+  display: block;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition);
+}
+.project:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-4);
+}
+.project .img {
+  height: 15rem;
+  border-top-right-radius: var(--borderRadius);
+  border-top-left-radius: var(--borderRadius);
+}
+.project h5 {
+  text-align: center;
+  padding: 1rem 0;
+  color: var(--grey-700);
+}
+@media (min-width: 768px) {
+  .projects-center {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 992px) {
+  .projects-center {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

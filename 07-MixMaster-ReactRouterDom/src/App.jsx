@@ -8,7 +8,14 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Landing /> },
       { path: 'cocktail', element: <Cocktail /> },
-      { path: 'about', element: <About /> },
+      {
+        path: 'about',
+        element: <About />,
+        children: [
+          { path: 'company', element: <h2>our company</h2> },
+          { path: 'person', element: <h3>john doe</h3> },
+        ],
+      },
       { path: 'newsletter', element: <Newsletter /> },
     ],
   },

@@ -7,12 +7,8 @@ const cocktailSearchUrl =
 export const loader = async () => {
   const searchTerm = 'margarita';
 
-  try {
-    const { data } = await axios.get(`${cocktailSearchUrl}${searchTerm}`);
-    return { drinks: data.drinks, searchTerm };
-  } catch (error) {
-    return error;
-  }
+  const { data } = await axios.get(`${cocktailSearchUrl}${searchTerm}`);
+  return { drinks: data.drinks, searchTerm };
 };
 
 const Landing = () => {

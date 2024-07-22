@@ -5,6 +5,7 @@ const HomeLayout = () => {
   const navigation = useNavigation();
 
   const isPageLoading = navigation.state === 'loading';
+  const value = 'some value';
 
   return (
     <>
@@ -13,7 +14,7 @@ const HomeLayout = () => {
         {isPageLoading ? (
           <div className="loading loading-center" />
         ) : (
-          <Outlet />
+          <Outlet context={{ value }} />
         )}
       </main>
     </>

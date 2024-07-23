@@ -291,3 +291,13 @@ PROJECT CSS
   margin: 0 auto;
   padding: 5rem 2rem;
 }
+.form h4 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.form .btn {
+  margin-top: 0.5rem;
+}
+.form .btn:disabled {
+  cursor: not-allowed;
+}

@@ -28,7 +28,13 @@ const Newsletter = () => {
         <label htmlFor="name" className="form-label">
           name
         </label>
-        <input type="text" id="name" name="name" className="form-input" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          className="form-input"
+          required
+        />
       </div>
       {/* last name */}
       <div className="form-row">
@@ -40,6 +46,7 @@ const Newsletter = () => {
           id="lastName"
           name="lastName"
           className="form-input"
+          required
         />
       </div>
       <div className="form-row">
@@ -52,6 +59,7 @@ const Newsletter = () => {
           name="email"
           className="form-input"
           defaultValue="test@test.com"
+          required
         />
       </div>
       <button className="btn btn-block">submit</button>

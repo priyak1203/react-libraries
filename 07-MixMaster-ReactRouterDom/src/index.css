@@ -301,3 +301,6 @@ PROJECT CSS
 .form .btn:disabled {
   cursor: not-allowed;
 }
+.Toastify__toast-body {
+  text-transform: capitalize;
+}

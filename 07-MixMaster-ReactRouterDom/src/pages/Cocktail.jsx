@@ -21,9 +21,6 @@ export const loader =
   async ({ params }) => {
     const { id } = params;
     await queryClient.ensureQueryData(singleCocktailQuery(id));
-    // const { data } = await axios.get(`${singleCocktailUrl}${id}`);
-
-    // return { id, data };
     return { id };
   };
 

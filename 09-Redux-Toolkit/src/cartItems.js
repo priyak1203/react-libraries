@@ -20,13 +20,13 @@ const cartItems = [
     img: 'https://www.course-api.com/images/cart/phone-3.png',
     amount: 1,
   },
-  {
-    id: 'recwTo160XST3PIoW',
-    title: 'Samsung Galaxy S7',
-    price: '599.99 ',
-    img: 'https://www.course-api.com/images/cart/phone-4.png',
-    amount: 1,
-  },
+  // {
+  //   id: 'recwTo160XST3PIoW',
+  //   title: 'Samsung Galaxy S7',
+  //   price: '599.99 ',
+  //   img: 'https://www.course-api.com/images/cart/phone-4.png',
+  //   amount: 1,
+  // },
 ];
 
 export default cartItems;

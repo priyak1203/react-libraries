@@ -16,7 +16,7 @@ function App() {
   }, [cartItems]);
 
   useEffect(() => {
-    dispatch(getCartItems('fetchItems'));
+    dispatch(getCartItems());
   }, []);
 
   if (isLoading) {

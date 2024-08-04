@@ -1,13 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import cartItems from '../../cartItems';
+import { openModal } from '../modal/modalSlice';
 
 const url = 'https://www.course-api.com/react-useReducer-cart-project';
 
 export const getCartItems = createAsyncThunk(
   'cart/getCartItems',
   async (name, thunkAPI) => {
-    console.log(name);
+    // console.log(name);
     console.log(thunkAPI);
+    console.log(thunkAPI.getState());
+    thunkAPI.dispatch(openModal());
 
     try {
       const resp = await fetch(url);

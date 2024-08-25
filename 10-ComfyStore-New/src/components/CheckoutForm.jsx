@@ -42,6 +42,9 @@ export const action =
         error?.response?.data?.error?.message ||
         'there was an error placing your order';
       toast.error(errorMessage);
+
+      const status = error?.response?.status;
+      if (status === 401 || status === 403) return redirect('/login');
       return null;
     }
   };
